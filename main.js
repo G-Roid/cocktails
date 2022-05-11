@@ -9,6 +9,36 @@ function getDrink() {
     .then(data => {
         console.log(data)
 
+        let ingredientsArr = []
+
+        for (let i = 0; i < 15; i++) {
+            if (data.drinks[0][`strIngredient${i}`] != null) {
+                ingredientsArr.push(data.drinks[0][`strIngredient${i}`])
+            }
+            
+        } 
+        console.log(ingredientsArr)   
+        
+        // update the ul for each ingredient item
+        
+        for (let i = 0; i < ingredientsArr.length; i++) {
+            let newListItem = document.createElement('li');
+            let newContent = document.createTextNode(ingredientsArr[i])
+
+
+            newListItem.appendChild(newContent)
+            console.log(newContent)
+
+            document.querySelector('ul').appendChild(newListItem)
+        }
+
+      
+
+
+        
+        
+
+
         document.querySelector('h2').textContent = data.drinks[0].strDrink
 
         document.querySelector('img').src = data.drinks[0].strDrinkThumb
