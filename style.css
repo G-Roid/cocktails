@@ -5,3 +5,7 @@ main {
     justify-content: space-evenly;
     
 }
+
+img {
+    height: 200px;
+}
