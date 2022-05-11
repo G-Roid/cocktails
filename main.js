@@ -4,6 +4,21 @@ function getDrink() {
     let choice = document.querySelector('input').value;
     document.querySelector('input').value = '';
 
+    let oldIngredients = document.querySelectorAll('li')
+    console.log('The old ' + oldIngredients.length)
+    console.log(oldIngredients)
+
+    // Array.prototype.forEach.call( oldIngredients, function( node ) {
+    //     node.parentNode.removeChild( node );
+    // });
+
+    oldIngredients.forEach(function( node ) {
+        node.parentNode.removeChild( node );
+    });
+    
+
+    
+
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${choice}`)
     .then(res => res.json())
     .then(data => {
@@ -36,9 +51,6 @@ function getDrink() {
 
 
         
-        
-
-
         document.querySelector('h2').textContent = data.drinks[0].strDrink
 
         document.querySelector('img').src = data.drinks[0].strDrinkThumb
